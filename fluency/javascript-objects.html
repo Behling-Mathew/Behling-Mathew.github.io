@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript Objects | CIT 261</title>
+    <meta name="description" content="This page serves to demonstrate examples of working with JavaScript Objects">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+      
+    <style>
+        
+        body {
+            background-color: lightgrey;
+            font-family: 'Calligraffitti', cursive;
+            font-size: 1.4rem;
+            
+        }
+        main {
+            margin-left: auto;
+            margin-right: auto;
+            width: 375px;
+        }
+      
+        figure {
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 0;
+        }
+        ul p {
+            display: inline;
+        }
+        
+        img {
+            width: 250px;
+        }
+        figcaption {
+            
+            font-family: Garamond, serif;
+            font-weight: bold;
+            font-size: 1.7rem;
+            color: darkolivegreen;
+            
+        }
+      
+    </style>  
+    
+  </head>
+  <body>
+    <main>
+        <h2>JavaScript Objects</h2>
+        
+        <h3>Person object 1</h3>
+        <ul>
+            <li>First Name: <p id="firstName"></p></li>
+            <li>Last Name: <p id="lastName"></p></li>
+            <li>Age: <p id="age"></p></li>
+            <li>Height: <p id="height"></p></li>
+            <li>Title: <p id="title"></p></li>
+        </ul>
+        <figure id="image"></figure>
+        <figcaption id="fullTitle"></figcaption>
+        
+        <h3>Person object 2</h3>
+        <ul>
+            <li>First Name: <p id="firstName2"></p></li>
+            <li>Age: <p id="age2"></p></li>
+            <li>Height: <p id="height2"></p></li>
+            <li>Title: <p id="title2"></p></li>
+        </ul>
+        <figure id="image2"></figure>
+        <figcaption id="fullTitle2"></figcaption>
+        
+        <h3>Person object 3</h3>
+        <ul>
+            <li>First Name: <p id="firstName3"></p></li>
+            <li>Age: <p id="age3"></p></li>
+            <li>Height: <p id="height3"></p></li>
+            <li>Title: <p id="title3"></p></li>
+        </ul>
+        <figure id="image3"></figure>
+        <figcaption id="fullTitle3"></figcaption>
+        
+      <script>
+          
+          // JavaScript Object Constructor for a Person
+          function Person(firstName, lastName, age, height, title) {
+              this.firstName = firstName;
+              this.lastName = lastName;
+              this.age = age;
+              this.height = height;
+              this.title = title;
+          }
+          
+          // Create 3 new person objects / INSTANTIATION
+          var frodo = new Person("Frodo", "Baggins", 50, "3\'6\"", "Ring-bearer");
+          var gandalf = new Person("Gandalf", "unknown", 2019, "5\'6\"", "The Grey");
+          var gollum = new Person("Gollum", "unknown", 589, "3\'4\"", "The Corrupted");
+          
+          // Add a method to the 3 person objects to combine a name values and title into a full title
+          // The .italics() method is an example of method inheritance/borrowing since there is none defined for Person
+          frodo.fullTitle = function() {
+              return this.title.italics() + " " + this.firstName + " " + this.lastName;
+          };
+          
+          gandalf.fullTitle = function() {
+              return this.firstName + " " + this.title.italics(); // Order changes here
+          };
+          
+          gollum.fullTitle = function() {
+              return this.firstName + " " + this.title.italics();
+          };
+          
+          // Add a property and value of an image for all three Person objects
+          frodo.image = '<img src=\'https://upload.wikimedia.org/wikipedia/en/4/4e/Elijah_Wood_as_Frodo_Baggins.png\'>';
+          gandalf.image = '<img src=\'http://tolkiengateway.net/w/images/3/36/The_Hobbit_%28film_series%29_-_Gandalf.jpg\'>';
+          gollum.image = '<img src=\'https://upload.wikimedia.org/wikipedia/en/e/e0/Gollum.PNG\'>';
+          
+          // Delete last name properties and values for Gandalf and Gollum since it is n/a to them
+          delete gandalf.lastName;
+          delete gollum.lastName;
+          
+          
+          // Access frodo object
+          document.getElementById("firstName").innerHTML = frodo.firstName;
+          document.getElementById("lastName").innerHTML = frodo.lastName;
+          document.getElementById("age").innerHTML = frodo.age;
+          document.getElementById("height").innerHTML = frodo.height;
+          document.getElementById("title").innerHTML = frodo.title;
+          document.getElementById("image").innerHTML = frodo.image;
+          
+          // Access gandalf object
+          document.getElementById("firstName2").innerHTML = gandalf.firstName;
+          //document.getElementById("lastName2").innerHTML = gandalf.lastName;
+          document.getElementById("age2").innerHTML = gandalf.age;
+          document.getElementById("height2").innerHTML = gandalf.height;
+          document.getElementById("title2").innerHTML = gandalf.title;
+          document.getElementById("image2").innerHTML = gandalf.image;
+          
+          // Access gollum object
+          document.getElementById("firstName3").innerHTML = gollum.firstName;
+          //document.getElementById("lastName3").innerHTML = gollum.lastName;
+          document.getElementById("age3").innerHTML = gollum.age;
+          document.getElementById("height3").innerHTML = gollum.height;
+          document.getElementById("title3").innerHTML = gollum.title;
+          document.getElementById("image3").innerHTML = gollum.image;
+          
+          // Call the fullTitle() method for for all three objects.
+          document.getElementById("fullTitle").innerHTML = frodo.fullTitle();
+          document.getElementById("fullTitle2").innerHTML = gandalf.fullTitle();
+          document.getElementById("fullTitle3").innerHTML = gollum.fullTitle();
+          
+
+      </script>	  
+    </main>  
+  </body>
+</html>

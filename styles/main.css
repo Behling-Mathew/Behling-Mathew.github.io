@@ -1,0 +1,55 @@
+
+* { margin: 0; box-sizing: border-box; } 
+
+body { 
+    font-size: 16px; 
+    line-height: 32px;
+    font-family: Garamond, sans-serif;
+    color: darkblue;
+    background-image: url(../images/background.jpg);
+    
+}
+main {
+    background-color: #ffffff;
+}
+
+li {
+    padding: .5rem;
+}
+
+h1 {
+    font-size: 20px;
+    font-family: Garamond, sans-serif;
+    color: darkslateblue;
+}
+
+h2 {
+    font-size: 16px;
+    font-family: Garamond, sans-serif;
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+}
+
+header, main, footer {
+    margin: 1.25rem auto;
+    padding: .5rem;
+    max-width: 1400px;
+}
+
+header, footer, footer a {
+    text-align: center;
+    background-color: silver;
+    color: whitesmoke;
+}
+
+header img {
+    width: 12%;
+    height: 12%;
+    float: right;
+}
+
+footer {
+    font-size: 14px;
+    font-family: Garamond, sans-serif;
+    color: royalblue
+}
