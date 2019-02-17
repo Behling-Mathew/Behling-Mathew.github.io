@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript | CIT 261</title>
+    <meta name="description" content="This page serves to demonstrate examples of working with JavaScript">
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
+      
+    <style>
+        
+        body {
+            background-color: lightgrey;
+            font-family: 'Calligraffitti', cursive;
+            font-size: 1.4rem;
+            
+        }
+        main {
+            margin-left: auto;
+            margin-right: auto;
+            width: 375px;
+        }
+      
+        figure {
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 0;
+        }
+        ul p {
+            display: inline;
+        }
+        
+        img {
+            width: 250px;
+        }
+        figcaption {
+            
+            font-family: Garamond, serif;
+            font-weight: bold;
+            font-size: 1.7rem;
+            color: darkolivegreen;
+            
+        }
+      
+    </style>  
+    
+  </head>
+  <body>
+    <main>
+        <h1>Top Movies List</h1>
+        
+       
+      <script>
+          document.addEventListener('DOMContentLoaded', function(){
+              var top = ["LOTR", "The Dark Knight", "The Count of Monte Cristo", "The Lion King", "Star Wars"];
+              var main = document.querySelector('main');
+              top.forEach(t => {
+                  main.innerHTML += "<p>" + t + "</p>";
+              });
+          });
+          
+
+      </script>	  
+    </main>  
+  </body>
+</html>
