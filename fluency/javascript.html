@@ -13,52 +13,145 @@
             background-color: lightgrey;
             font-family: 'Calligraffitti', cursive;
             font-size: 1.4rem;
-            
+            width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         main {
             margin-left: auto;
             margin-right: auto;
-            width: 375px;
-        }
-      
-        figure {
-            margin-right: auto;
-            margin-left: auto;
-            margin-bottom: 0;
-        }
-        ul p {
-            display: inline;
+            
+            display: grid;
+            grid-template-columns: auto auto auto;
+            
         }
         
+        button {
+            background-color: lightyellow;
+            width: 150px;
+            padding: 10px;
+            font-family: 'Calligraffitti', cursive;
+            font-size: 1.3rem;
+            text-align: center;
+            font-weight: bold;
+            
+        }
+        div {
+            text-align: center;
+        }
+      
         img {
             width: 250px;
+            padding: 15px;
+            
+		}
+        img:hover {
+            width: 300px;
         }
-        figcaption {
-            
-            font-family: Garamond, serif;
-            font-weight: bold;
-            font-size: 1.7rem;
-            color: darkolivegreen;
-            
+        
+        
+        }
+        h1 {
+            display: block;
+            text-align: center;   
         }
       
     </style>  
     
   </head>
   <body>
+      <h1>Top Movies List</h1>
+      <div>
+        <button onclick="myFunction()">Click Me</button>
+      </div>
+      <p id="demo"></p>
     <main>
-        <h1>Top Movies List</h1>
+        
         
        
       <script>
+          // Array to hold top movies
           document.addEventListener('DOMContentLoaded', function(){
-              var top = ["LOTR", "The Dark Knight", "The Count of Monte Cristo", "The Lion King", "Star Wars"];
+              var associativeArray = new Array();
+              associativeArray['FirstPlace'] = "src=\'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SY999_CR0,0,673,999_AL_.jpg\'";
+              var top = ["id=\'1\' src=\'https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SY999_CR0,0,673,999_AL_.jpg\'", "id=\'2\' src=\'https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg\'", "id=\'3\' src=\'https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_.jpg\'", "id=\'4\' src=\'https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SY1000_CR0,0,673,1000_AL_.jpg\'", "id=\'5\' src=\'https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,641,1000_AL_.jpg\'", "id=\'6\' src=\'https://m.media-amazon.com/images/M/MV5BMDM0ZWRjZDgtZWI0MS00ZTIzLTg4MWYtZjU5MDEyMDU0ODBjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SY1000_CR0,0,674,1000_AL_.jpg\'"];
               var main = document.querySelector('main');
+              // forEach loop to display each element 
               top.forEach(t => {
-                  main.innerHTML += "<p>" + t + "</p>";
+                  main.innerHTML += "<img " + t + ">";
               });
+             
           });
           
+         
+          
+          // Funcions
+          // Takes a parameter of choice to change image styling | also uses if, else if conditions
+          function winner(choice)
+          {
+              if (choice == 1){
+              document.getElementById("1").style.width = "500px";
+              document.getElementById("1").style.border = "thick solid gold";
+              }
+          
+              else if (choice == 2){
+              document.getElementById("2").style.width = "500px";
+              document.getElementById("2").style.border = "thick solid gold";
+              }
+              else if (choice == 3){
+              document.getElementById("3").style.width = "500px";
+              document.getElementById("3").style.border = "thick solid gold";
+              }
+              else if (choice == 4){
+              document.getElementById("4").style.width = "500px";
+              document.getElementById("4").style.border = "thick solid gold";
+              }
+              else if (choice == 5){
+              document.getElementById("5").style.width = "500px";
+              document.getElementById("5").style.border = "thick solid gold";
+              }
+              else if (choice == 6){
+              document.getElementById("6").style.width = "500px";
+              document.getElementById("6").style.border = "thick solid gold";
+              }
+              
+          }
+          
+          // function to get user input on favorite movie
+          function myFunction() {
+              var choice = prompt("Of these movies, which one is your favorite? (1 = LOTR, 2 = Batman, 3 = The Count of Monte Cristo, 4 = The Lion King, 5 = Star Wars, 6 = Casablanca)");
+              var movie;
+              if (choice > 0 && choice < 7) {
+                  if (choice == 1) {
+                      movie = "The Lord of the Rings, which is my personal favorite,";
+                  }
+                  if (choice == 2) {
+                      movie = "The Dark Knight";
+                  }
+                  if (choice == 3) {
+                      movie = "Casablanca";
+                  }
+                  if (choice == 4) {
+                      movie = "The Lion King";
+                  }
+                  if (choice == 5) {
+                      movie = "The Empire Strikes Back";
+                  }
+                  if (choice == 6) {
+                      movie = "The Count of Monte Cristo";
+                  }
+                document.getElementById("demo").innerHTML =
+                 movie + " is a great choice!";
+            }
+              else
+                  document.getElementById("demo").innerHTML =
+                 "You entered " + choice + ". Please enter 1-5";
+              
+                // Pass the paramter choice into the winnner function.
+                winner(choice);
+            
+             
+        }
 
       </script>	  
     </main>  
