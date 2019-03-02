@@ -36,6 +36,14 @@
             font-weight: bold;
             
         }
+        .text {
+            
+            font-size: 1.7rem;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+                
+            }
         div {
             text-align: center;
         }
@@ -55,6 +63,46 @@
             display: block;
             text-align: center;   
         }
+        .blinker {
+            animation: flash linear 3s infinite;
+        }
+        .morph {
+            animation: squareToCircle 3s 1s;
+        }
+        @keyframes flash {
+        0% { opacity: 1; } 
+        50% { opacity: .1; } 
+        100% { opacity: 1; }
+        }
+        @keyframes squareToCircle {
+        0% {
+          border-radius: 0 0 0 0;
+
+          transform: rotate(0deg);
+        }
+        25% {
+          border-radius: 50% 0 0 0;
+
+          transform: rotate(45deg);
+        }
+        50% {
+          border-radius: 50% 50% 0 0;
+
+          transform: rotate(90deg);
+        }
+        75% {
+          border-radius: 50% 50% 50% 0;
+
+          transform: rotate(135deg);
+        }
+        100% {
+          border-radius: 50% 50% 50% 50%;
+
+          transform: rotate(360deg);
+        }
+        
+        
+       
       
     </style>  
     
@@ -93,32 +141,44 @@
               document.getElementById("1").style.width = "500px";
               document.getElementById("1").style.border = "thick solid gold";
               document.getElementById("1").style.borderRadius = "50%";  
+              document.getElementById("1").className = "blinker";
+              document.getElementById("demo").className = "text";
               }
           
               else if (choice == 2){
+              document.getElementById("demo").className = "text";
               document.getElementById("2").style.width = "500px";
               document.getElementById("2").style.border = "thick solid silver";
               document.getElementById("2").style.borderRadius = "50%";
+              document.getElementById("2").className = "morph";      
               }
               else if (choice == 3){
+              document.getElementById("demo").className = "text";
               document.getElementById("3").style.width = "500px";
               document.getElementById("3").style.border = "thick solid #cd7f32";
               document.getElementById("3").style.borderRadius = "50%";
+              document.getElementById("3").className = "blinker";
               }
               else if (choice == 4){
+              document.getElementById("demo").className = "text";
               document.getElementById("4").style.width = "500px";
               document.getElementById("4").style.border = "thick solid green";
               document.getElementById("4").style.borderRadius = "50%";
+              document.getElementById("4").className = "morph"; 
               }
               else if (choice == 5){
+              document.getElementById("demo").className = "text";
               document.getElementById("5").style.width = "500px";
               document.getElementById("5").style.border = "thick solid blue";
               document.getElementById("5").style.borderRadius = "50%";
+              document.getElementById("5").className = "blinker";
               }
               else if (choice == 6){
+              document.getElementById("demo").className = "text";
               document.getElementById("6").style.width = "500px";
               document.getElementById("6").style.border = "thick solid red";
               document.getElementById("6").style.borderRadius = "50%";
+              document.getElementById("6").className = "morph";
               }
               
           }
@@ -151,7 +211,7 @@
             }
               else
                   document.getElementById("demo").innerHTML =
-                 "You entered " + choice + ". Please enter 1-5";
+                 "You entered " + choice + ". Please enter 1-6";
               
                 // Pass the paramter choice into the winnner function.
                 winner(choice);
