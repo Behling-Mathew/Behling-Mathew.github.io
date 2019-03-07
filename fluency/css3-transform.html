@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS3 Transform | CIT 261</title>
+    <meta name="description" content="This page serves to demonstrate an example of working with CSS3 Transform.">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+      
+    <style>
+        
+        body {
+            background-color: white;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.4rem;
+            width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #002B5C;
+            text-align: center;
+            padding-top: 30px;
+        }
+        
+        .logo {
+            position: relative;
+            left: -400px;
+            bottom: 130px;
+        }
+        
+        .carousel {
+
+          position: absolute;
+
+          top: 50%;
+          left: 50%;
+          width: 200px;
+          height: 210px;
+          margin: 0;
+          perspective: 900px;
+          transform: translate(-50%, -50%);
+
+        }
+
+
+        /* Use of transform-style: preserve-3d and translateZ and rotateY */
+        .carousel-content {
+
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+
+          transform: translateZ(-300px) rotateY(0);
+          animation: carousel 18s infinite cubic-bezier(1, 0.115, 0.295, 1) forwards;
+
+        }
+
+
+
+        .carousel-item {
+
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 350px;
+          height: 254px;
+        }
+
+
+        /* nth-children will rotate in 72 degree increments around the y axis */
+        .carousel-item:nth-child(1) {
+
+          background-image: url("http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4257.png&w=350&h=254");
+
+          transform: rotateY(0) translateZ(300px);
+
+        }
+
+
+        .carousel-item:nth-child(2) {
+
+          background-image: url("http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3908809.png&w=350&h=254");
+
+
+          transform: rotateY(72deg) translateZ(300px);
+
+        }
+
+
+        .carousel-item:nth-child(3) {
+
+          background-image: url("http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3032976.png&w=350&h=254");
+
+          transform: rotateY(144deg) translateZ(300px);
+        }
+
+        .carousel-item:nth-child(4) {
+
+          background-image: url("http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2968436.png&w=350&h=254");
+
+          transform: rotateY(216deg) translateZ(300px);
+        }
+
+        .carousel-item:nth-child(5) {
+
+          background-image: url("http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4011.png&w=350&h=254");
+
+          transform: rotateY(288deg) translateZ(300px);
+        }
+
+        
+        /* - values match the nth children above to evenly rotate */
+         @keyframes
+            carousel {  0% {
+
+             transform: translateZ(-300px) rotateY(0);
+            }
+             20% {
+
+             transform: translateZ(-300px) rotateY(-72deg);
+            }
+             40% {
+
+             transform: translateZ(-300px) rotateY(-144deg);
+            }
+             60% {
+
+             transform: translateZ(-300px) rotateY(-216deg);
+            }
+             80% {
+
+             transform: translateZ(-300px) rotateY(-288deg);
+            }
+              100% {
+
+             transform: translateZ(-300px) rotateY(-360deg);
+            }
+         }
+
+    </style>  
+    
+  </head>
+  <body>
+    
+    <main>
+
+      <h1>Utah Jazz Starting Lineup</h1>
+      <img class="logo" src="https://cdn.freebiesupply.com/images/large/2x/utah-jazz-note-logo.png" width=350>
+      <div class="carousel">
+        <div class="carousel-content">
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+          <div class="carousel-item"></div>
+        </div>
+      </div>  
+ 
+    </main>  
+  </body>
+</html>
