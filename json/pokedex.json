@@ -17,7 +17,8 @@
       "Sp. Attack": 65,
       "Sp. Defense": 65,
       "Speed": 45
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/bulbasaur-2.gif"  
   },
   {
     "id": 2,
@@ -37,7 +38,8 @@
       "Sp. Attack": 80,
       "Sp. Defense": 80,
       "Speed": 60
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/ivysaur-2.gif"
   },
   {
     "id": 3,
@@ -57,7 +59,8 @@
       "Sp. Attack": 100,
       "Sp. Defense": 100,
       "Speed": 80
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/venusaur-female.gif"  
   },
   {
     "id": 4,
@@ -76,7 +79,8 @@
       "Sp. Attack": 60,
       "Sp. Defense": 50,
       "Speed": 65
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/charmander-3.gif"  
   },
   {
     "id": 5,
@@ -95,7 +99,8 @@
       "Sp. Attack": 80,
       "Sp. Defense": 65,
       "Speed": 80
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/charmeleon-3.gif"  
   },
   {
     "id": 6,
@@ -115,7 +120,8 @@
       "Sp. Attack": 109,
       "Sp. Defense": 85,
       "Speed": 100
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/charizard-3.gif"  
   },
   {
     "id": 7,
@@ -134,7 +140,8 @@
       "Sp. Attack": 50,
       "Sp. Defense": 64,
       "Speed": 43
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/squirtle-3.gif"  
   },
   {
     "id": 8,
@@ -153,7 +160,8 @@
       "Sp. Attack": 65,
       "Sp. Defense": 80,
       "Speed": 58
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/wartortle-3.gif"  
   },
   {
     "id": 9,
@@ -172,7 +180,8 @@
       "Sp. Attack": 85,
       "Sp. Defense": 105,
       "Speed": 78
-    }
+    },
+    "sprite": "http://www.pokestadium.com/sprites/xy/blastoise-4.gif"  
   },
   {
     "id": 10,
