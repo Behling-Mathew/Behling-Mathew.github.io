@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM Manipulation | CIT 261</title>
+    <meta name="description" content="This page serves to demonstrate an example of DOM Manipulation">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+      
+  <style>
+        
+        body {
+            background-color: white;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.4rem;
+            width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: black;
+            text-align: center;
+            padding-top: 30px;
+            background-color: lightblue;
+            
+        }
+      .taskList {
+          margin-right: auto;
+          margin-left: auto;
+          position: relative;
+          right: 70px;
+          top: 20px;
+          
+          
+      }
+      #userInput{
+          padding: 10px;
+      }
+      #addTasks{
+          position: relative;
+          left: 80px;
+      }
+      
+      button {
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-right: 15px;
+          margin-left: 15px;
+          border-radius: 4px;
+      }
+      #add {
+          background-color: lightgreen;
+          font-weight: bold;
+          border-radius: 4px;
+      }
+     
+      ul {
+          width: 400px;
+      }
+      li {
+          
+           margin-right: auto;
+           margin-left: auto;
+           list-style-type: none;
+           width: 400px;
+           text-align: right;
+      }
+      
+      .delete {
+          text-align: right;
+          
+          background-color: red;
+      }
+      .prepend {
+          background-color: yellow;
+          
+      }
+      
+      .highlight {
+          background-color: gold;
+          padding: 10px;
+          font-weight: bold;
+          border-radius: 15px;
+          
+      }
+      p {
+          width: 600px;
+          margin-right: auto;
+          margin-left: auto;
+          font-size: 1rem;
+          text-align: left;
+      }
+    
+  </style> 
+     
+    
+  </head>
+  <body>
+      <header>
+      <h1>Tasks to Do</h1>
+      <p>Add some tasks you need to do by typing them in the box and clicking the add button.  Once you've added a few tasks, you can click the red button to remove a task, or you an click the yellow button to prioritize that task and move it to the top of the list.</p>
+      
+      </header>
+    
+    <main>
+        
+      <section class="taskList">
+        <div>
+          <div>
+            <div>
+              <div id="addTasks">
+                <input id="userInput" type="text" placeholder="Enter tasks!">
+                <button id="add">Add</button>
+              </div> 
+              <ul class="taskList">
+                
+              </ul> 
+            </div> 
+           </div>
+          </div>
+        </section>
+
+        
+
+    </main>  
+  </body>
+  <script>
+      
+      var button = document.getElementById("add");
+      var input = document.getElementById("userInput");
+      var ul = document.querySelector(".taskList");
+      
+      function inputLength() {
+          return input.value.length;
+      }
+      
+      function createListElement() {
+          var li = document.createElement("li");
+          li.appendChild(document.createTextNode(input.value));
+          ul.appendChild(li);
+          
+          input.value = "";
+          
+          //create delete button
+      var btnDel = document.createElement("button");
+          btnDel.appendChild(document.createTextNode("X"));
+          li.appendChild(btnDel);
+          btnDel.addEventListener("click", deleteListItem);
+          btnDel.classList.add("delete");
+          
+          // display none
+          function deleteListItem() {
+              li.classList.add("delete");
+              li.removeChild(btnDel);
+              ul.removeChild(li);
+          }
+          
+          var btnPrepend = document.createElement("button");
+          btnPrepend.appendChild(document.createTextNode("O"));
+          li.insertBefore(btnPrepend, li.childNodes[0]);
+          btnPrepend.addEventListener("click", toTop);
+          btnPrepend.classList.add("prepend");
+          
+          function toTop() {
+              ul.insertBefore(li, ul.childNodes[3]);
+              var x = document.getElementsByTagName("li")[0];
+              x.classList.add("highlight");
+          }
+   
+      }
+      
+      function addListAfterClick() {
+          if (inputLength() > 0)
+              {
+                  createListElement();
+              }
+      }
+      
+      function addListAfterKeypress(event) {
+          if (inputLength() > 0 && event.keycode === 13) {
+              createListElement();
+          }
+      }
+      
+      button.addEventListener("click", addListAfterClick);
+      
+      input.addEventListener("keypress", addListAfterKeypress);
+      
+      
+      
+    
+       
+        
+  
+  </script> 
+</html>
