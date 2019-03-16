@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML 5 Tags | CIT 261</title>
+    <meta name="description" content="This page serves to demonstrate an example of HTML5 tags including video, audio, and canvas.">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+      
+  <style>
+        
+    body {
+        background-color: white;
+        font-family: 'Roboto Slab', serif;
+        font-size: 1.4rem;
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        color: black;
+        text-align: center;
+        padding-top: 30px;
+        background-color: lightblue;
+            
+        }
+      
+      canvas {
+          border: 2px dotted black;
+          background: white;
+          padding: 10px;
+          
+      }
+      audio {
+          padding: 20px;
+      }
+      button {
+          padding: 5px;
+          position: relative;
+          right: 80px;
+          margin-bottom: 50px;
+      }
+    
+  </style> 
+     
+    
+  </head>
+  <body>
+      <header>
+      <h1>Video, Music and Canvas</h1>
+      <p>Watch a video, listen to classical music, or draw on the canvas to experience the arts through the web.</p>
+      
+      </header>
+    
+      <main>
+        <video width="720" controls>
+          <source src="../images/Sandwich-Final.mp4" type="video/mp4">
+        </video>  
+        
+          <br>
+        <h3>Pachelbel</h3>
+        <audio controls>
+          <source src="../images/Canon_in_D_ni_nonaC_Pachelbels_Canon.mp3" type="audio/mpeg">
+        </audio>
+          <br>
+          
+        <h3>Mozart</h3>  
+        <audio controls>
+          <source src="../images/Turkish_Eternity_Mozarts_Piano_Sonata_No_11.mp3" type="audio/mpeg">
+        </audio>
+          <br>
+        <h3>Bach</h3>
+        <audio controls>
+          <source src="../images/Two-Part_Invention_in_1985_Bachs_Inventions_and_Sinfonias.mp3" type="audio/mpeg">
+        </audio>
+          
+        <canvas>
+          
+        </canvas>
+        <button onclick="clearCanvas()">Clear Canvas</button>
+        <label for="color">Choose Color</label>
+          <input class="color" type="color" name="color" value="#000000">
+          
+         
+          
+      </main>  
+  </body>
+  <script>
+    var canvas = document.querySelector('canvas');
+    var z = canvas.getContext('2d');
+    
+    
+    
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      console.log(canvas);
+      
+      // Initial canvas dimensions and styles
+      canvas.width = 800;
+      canvas.height = 600;
+      z.lineCap = "round";
+      z.lineJoin = "round";
+      z.strokeStyle = "#000000";
+      z.lineWidth = 5;
+      
+      var colorInput = document.querySelector(".color");
+      
+      // clear canvas
+      function clearCanvas(){
+          z.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      // change color function
+      function changeColor(){
+          z.strokeStyle = this.value;
+      }
+      
+      //color change event listener
+      colorInput.addEventListener('change', changeColor);
+      // draw on mousedown
+      let prevX = 0;
+      let prevY = 0;
+      let drawing = false;
+      
+      function draw(e){
+          if(!drawing){
+              return;
+          }
+          z.beginPath();
+          z.moveTo(prevX, prevY);
+          z.lineTo(e.offsetX, e.offsetY);
+          z.stroke();
+          prevX = e.offsetX;
+          prevY = e.offsetY;
+           
+      }
+      
+      // User drawing event listeners
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseout', function(){drawing = false;});
+      canvas.addEventListener('mouseup', function(){drawing = false;});
+      canvas.addEventListener('mousedown', function(e){
+          drawing = true;
+          prevX = e.offsetX;
+          prevY = e.offsetY;
+      });
+      
+      
+     
+  
+  </script> 
+</html>
