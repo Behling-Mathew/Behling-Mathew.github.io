@@ -39,18 +39,23 @@
         input[type=text]#blue
         {
            background: blue;
+           transition-timing-function: linear;
         }
         input[type=text]#green
         {
            background: lightgreen;
+           transition-timing-function: ease;
         }
         input[type=text]#yellow
         {
            background: lightyellow;
+           transition-timing-function: ease-in;
+           
         }
         input[type=text]#red
         {
            background: red;
+           transition-timing-function: ease-out;
         }
 
 
@@ -73,16 +78,22 @@
         {
           color:#5cb85c;
           background:#fff;
+          width: 400px;
+          height: 50px;
         }
         input[type=text]#yellow:focus
         {
           color:#f0ad4e;
-          background:#fff;
+          background: #000;
+          transform: rotate(360deg);
+          
         }
         input[type=text]#red:focus
         {
           color:#d9534f;
           background: white;
+          height: 50px;
+          transform: skewY(-10deg);
         }
 
 
@@ -90,14 +101,14 @@
         div.tab 
         {
             width: 100px;
-            float:left;
-            display:inline-block;
+            float: left;
+            display: inline-block;
             padding: 4px 8px;
             color: black;
             font-size: 12px;
-
             border: none;
-           transition: all ease-in-out .3s;
+            transition: all ease-in-out .8s;
+            
 
         }
 
@@ -113,13 +124,14 @@
         }
         div#yellow
         {
-           background: lightyellow;
+           background: goldenrod;
            transition-timing-function: ease-in;
         }
         div#red
         {
            background: red;
            border-radius: 0 20px 10px 0;
+           
         }
 
 
@@ -127,6 +139,7 @@
         div.tab:hover 
         {
             width: 165px; 
+            
             outline: none;  
             background: white;
 
@@ -145,13 +158,19 @@
         }
         div#yellow:hover
         {
-          width: 90px;
+          
+          
+          width: 300px;    
+          height: 30px;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           color: white;
         }
         div#red:hover
         {
          width: 136px;
          color: white;
+         transform: rotate(-10deg);      
         }
         .left {
           text-align: left;
