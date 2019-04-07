@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Star Wars Log | CIT 261 Final Project</title>
+    <meta name="description" content="This page serves to demonstrate an example of working with several code topics learned over the course of the semester.">      
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  </head>    
+  <body>
+
+    <div class='controls'>
+      <select id='select' onchange="chooseCharacter(this.value)">
+        <option name="choice1" value="1" >Luke</option>
+        <option name="choice2" value="2" >C-3PO</option>
+        <option name="choice2" value="3" >R2-D2</option>
+        <option name="choice2" value="4" >Darth Vader</option>
+        <option name="choice2" value="5" >Leia Organa</option>
+        <option name="choice2" value="10" >Obi-Wan Kenobi</option>
+        <option name="choice2" value="13" >Chewbacca</option>
+        <option name="choice2" value="14" >Han Solo</option>
+        <option name="choice2" value="20" >Yoda</option>      
+      </select>      
+      <button id="btn">Request Log Data</button>
+      <button id="btn2">Choose New Character</button>
+
+
+    </div>
+    <div class="carousel">
+      <div class="carousel-content">
+        <div class="carousel-item"></div>
+        <div class="carousel-item"></div>
+        <div class="carousel-item"></div>
+        <div class="carousel-item"></div>
+        <div class="carousel-item"></div>
+      </div>
+    </div>
+
+
+    <p id="name"></p>
+    <div class="ebook" onclick="this.className = this.className">
+      <input type="checkbox" name="book" id="p1" />
+      <input type="checkbox" name="book" id="p2" />
+      <input type="checkbox" name="book" id="p3" />
+
+      <div class="cover"></div>
+      <div class="book">
+        <div class="p0 lp">
+          <div class="p0p lpi"><b></b>
+            <div class="text">
+              <h1 class="main-heading">Star Wars Log</h1>
+            </div>
+          </div>
+        </div>
+        <div class="p1 rp">
+          <div class="p1p rpi">
+            <div class="text"><label for="p1"></label>
+              <p>This book contains information about prominent Star Wars figures and their home planets as provided by the SWAPI service.</p>
+              <p>To make an Ajax request to obtain this information, please select a character from the selection box above.</p>
+              <p>You can turn the page of the book by clicking on the top-right corner of the page.  You may also turn the page back by clicking on the top-left corner of the page.</p>
+              <span>- 1 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p2 lp">
+          <div class="p2p lpi"><b></b>
+            <div class="text"><label for="p1"></label>
+              <div id='character-img' class='character-img'></div>
+              <span>- 2 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p3 rp">
+          <div class="p3p rpi">
+            <div class="text"><label for="p2"></label>
+              <div id="character-info"></div>
+
+              <span>- 3 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p4 lp">
+          <div class="p5p lpi"><b></b>
+            <div class="text"><label for="p2"></label>
+              <div id='planet-img' class="planets"></div>
+              <span>- 4 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p5 rp">
+          <div class="p5p rpi">
+            <div class="text"><label for="p3"></label>
+              <div id="planet-info"></div>
+              <span>- 5 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p6 lp">
+          <div class="p6p lpi"><b></b>
+            <div class="text"><label for="p3"></label>
+              <p>
+                We are still gathering intel on all prominent characters.  Please note any further information as you receive it.<br>
+                Any previous notes are listed below:
+              </p>
+              <div class="content-output"></div>
+              
+              <span>- 6 -</span>
+            </div>
+          </div>
+        </div>
+        <div class="p7 rp">
+          <div class="p7p rpi">
+            <div class="text"><label for="p4"></label>
+
+              <textarea placeholder="Write observations here..."
+                        rows="18" class="content-input"
+                        cols="40"></textarea>
+              <button class="save-button">Record Notes</button>    
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+  <style>
+
+    body{
+      background-image: url("../images/star-wars/galaxy.jpg");
+      font-family: 'Allerta Stencil', sans-serif;
+
+    }
+
+    /* Carousel Styling */
+    .carousel {
+
+      position: absolute;
+
+      top: 15%;
+      left: 70%;
+      width: 200px;
+      height: 210px;
+      margin: 0;
+      perspective: 900px;
+      transform: translate(-50%, -50%);
+
+    }
+
+
+    /* Use of transform-style: preserve-3d and translateZ and rotateY */
+    .carousel-content {
+
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+
+      transform: translateZ(-300px) rotateY(0);
+      animation: carousel 18s infinite cubic-bezier(1, 0.115, 0.295, 1) forwards;
+
+    }
+
+
+
+    .carousel-item {
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 350px;
+      height: 254px;
+    }
+
+
+    /* nth-children will rotate in 72 degree increments around the y axis */
+    .carousel-item:nth-child(1) {
+
+      background-image: url("../images/star-wars/tie-fighter.png");
+
+      transform: rotateY(0) translateZ(300px);
+
+    }
+
+
+    .carousel-item:nth-child(2) {
+
+      background-image: url("../images/star-wars/tie-fighter.png");
+
+
+      transform: rotateY(72deg) translateZ(300px);
+
+    }
+
+
+    .carousel-item:nth-child(3) {
+
+      background-image: url("../images/star-wars/tie-fighter.png");
+
+      transform: rotateY(144deg) translateZ(300px);
+    }
+
+    .carousel-item:nth-child(4) {
+
+      background-image: url("../images/star-wars/tie-fighter.png");
+
+      transform: rotateY(216deg) translateZ(300px);
+    }
+
+    .carousel-item:nth-child(5) {
+
+      background-image: url("../images/star-wars/falcon.png");
+
+      transform: rotateY(288deg) translateZ(300px);
+    }
+
+
+    /* - values match the nth children above to evenly rotate */
+    @keyframes
+    carousel {  0% {
+
+                  transform: translateZ(-300px) rotateY(0);
+                }
+                20% {
+
+                  transform: translateZ(-300px) rotateY(-72deg);
+                }
+                40% {
+
+                  transform: translateZ(-300px) rotateY(-144deg);
+                }
+                60% {
+
+                  transform: translateZ(-300px) rotateY(-216deg);
+                }
+                80% {
+
+                  transform: translateZ(-300px) rotateY(-288deg);
+                }
+                100% {
+
+                  transform: translateZ(-300px) rotateY(-360deg);
+                }
+    }
+
+
+    p, h1, h3{
+      padding: 10px;
+    }  
+    .ebook {width:700px; height:500px; position:relative; margin:20px 0 20px 20px;}
+    .ebook input {position:absolute; left:-9999px;}
+    .cover {width:700px; height:500px; padding:12px; background:#B36519; position:absolute; border-radius: 10px; left:-10px; top:-10px;}
+    .book {width:700px; height:550px; position:relative; z-index:100; background:transparent; overflow:hidden; font-family: 'Allerta Stencil', sans-serif;}
+    .rp {width:535px; height:600px; position:absolute; right:350px; top:0px; background:transparent; overflow:hidden;
+
+         transform-origin: 350px -900px;
+         transform: rotate(-20.6deg);
+         transition: 1s;
+         transform-style: preserve-3d;
+    }
+    .rpi {width:348px; height:498px; position:absolute; right:-315px; top:188px; background:white; border:1px solid #999;
+
+          background-image: linear-gradient(left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 50px, rgba(0, 0, 0, 0) 100%);
+
+          transform-origin: 350px -900px;
+          transform: rotate(20.6deg);
+          transition: 1s;
+          transform-style: preserve-3d;
+    }
+    .lp {width:535px; height:0px; position:absolute; right:350px; top:0px; background:transparent; overflow:hidden;
+
+         transform-origin: 350px -900px;
+         transform: rotate(-20.6deg);
+         transition: transform 1s, height 0s 1s;
+         transform-style: preserve-3d;
+    }
+    .lpi {width:348px; height:498px; position:absolute; right:0px; top:65px; background:#ffffff; border:1px solid #999; overflow:hidden;
+
+          transform-origin: 350px -900px;
+          transform: rotate(-21.2deg);
+          transition: 1s;
+          transform-style: preserve-3d;
+    }
+    .book .p0 {z-index:99;}
+    .book .p1 {z-index:99;}
+    .book .p2 {z-index:100;}
+    .book .p3 {z-index:98;}
+    .book .p4 {z-index:101;}
+    .book .p5 {z-index:97;}
+    .book .p6 {z-index:102;}
+    .book .p7 {z-index:96;}
+
+
+    #p1:checked ~ .book .p1,
+    #p2:checked ~ .book .p3,
+    #p3:checked ~ .book .p5,
+    #p4:checked ~ .book .p7,
+    #p5:checked ~ .book .p9,
+    #p6:checked ~ .book .p11,
+    #p7:checked ~ .book .p13
+    {
+
+      transform: rotate(0deg);
+      transform-style: preserve-3d;
+    }
+    #p1:checked ~ .book .p1 .rpi,
+    #p2:checked ~ .book .p3 .rpi,
+    #p3:checked ~ .book .p5 .rpi,
+    #p4:checked ~ .book .p7 .rpi,
+    #p5:checked ~ .book .p9 .rpi,
+    #p6:checked ~ .book .p11 .rpi,
+    #p7:checked ~ .book .p13 .rpi,
+    #p8:checked ~ .book .p15 .rpi,
+    #p9:checked ~ .book .p17 .rpi,
+    #p10:checked ~ .book .p19 .rpi,
+    #p11:checked ~ .book .p21 .rpi
+    {right:-350px; top:0px;
+
+     transform: rotate(0deg);
+     transform-style: preserve-3d;
+    }
+    .book .p0,
+    #p1:checked ~ .book .p2,
+    #p2:checked ~ .book .p4,
+    #p3:checked ~ .book .p6,
+    #p4:checked ~ .book .p8,
+    #p5:checked ~ .book .p10,
+    #p6:checked ~ .book .p12,
+    #p7:checked ~ .book .p14,
+    #p8:checked ~ .book .p16,
+    #p9:checked ~ .book .p18,
+    #p10:checked ~ .book .p20,
+    #p11:checked ~ .book .p22
+    {height:600px;
+
+     transition: transform 1s, height 0s 0s;
+     transform: rotate(0deg);
+     transform-style: preserve-3d;
+    }
+    .book .p0 .lpi,
+    #p1:checked ~ .book .p2 .lpi,
+    #p2:checked ~ .book .p4 .lpi,
+    #p3:checked ~ .book .p6 .lpi,
+    #p4:checked ~ .book .p8 .lpi,
+    #p5:checked ~ .book .p10 .lpi,
+    #p6:checked ~ .book .p12 .lpi,
+    #p7:checked ~ .book .p14 .lpi,
+    #p8:checked ~ .book .p16 .lpi,
+    #p9:checked ~ .book .p18 .lpi,
+    #p10:checked ~ .book .p20 .lpi,
+    #p11:checked ~ .book .p22 .lpi
+    {top:0px;
+
+     transform: rotate(0deg);
+     transform-style: preserve-3d;
+    }
+
+    #info .book p {padding:0; margin:0; width:250px; display:table-cell; vertical-align:middle; padding:0 50px; font: normal 16px/24px georgia, serif; color:#000;}
+    #info .book span {display:block; width:250px; width:350px; position:absolute; bottom:20px; left:0; text-align:center; font-size:11px;}
+    .book .lpi b {display:block; width:12px; height:550px; background:#B36519; position:absolute; right:0; top:0; box-shadow:5px 0 5px rgba(0,0,0,0.5);
+
+                  background-image: linear-gradient(left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+                  transform-origin: 50px -900px;
+                  transform: rotate(21.2deg);
+                  transition: 1s;
+                  transform-style: preserve-3d;
+    }
+    .book .p0 .lpi b,
+    #p1:checked ~ .book .p2 .lpi b,
+    #p2:checked ~ .book .p4 .lpi b,
+    #p3:checked ~ .book .p6 .lpi b,
+    #p4:checked ~ .book .p8 .lpi b,
+    #p5:checked ~ .book .p10 .lpi b,
+    #p6:checked ~ .book .p12 .lpi b,
+    #p7:checked ~ .book .p14 .lpi b,
+
+    {top:0px;
+
+     transform: rotate(0deg);
+     transform-style: preserve-3d;
+    }
+    .book .text {height:498px; display:table; vertical-align:middle;}
+    .book label {display:none; width:50px; height:50px; position:absolute; top:0; cursor:pointer;}
+    .book .rpi:hover label {display:block;}
+    .book .lpi:hover label {display:block;}
+
+    .book .rpi label {right:-1px;}
+    .book .lpi label {left:0;}
+
+    #info .book .p1p p {font-size:22px; text-align:center;}
+    #info .book .p23p p {font-size:22px; text-align:center;}
+    #info .book .p0 .text {font-size:18px; text-align:center;}
+
+    .controls {
+      position: fixed;
+      top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Allerta Stencil', sans-serif;
+    }
+    .controls select, button {
+      padding: 8px;
+      font-family: 'Allerta Stencil', sans-serif;
+      font-weight: bold;
+      font-size: 1.0rem;
+      color: white;
+      background-color: purple;
+
+    }
+    .character-img img {
+      position: relative;
+      top: 120px;
+      left: 40px;
+      transition: transform .9s;
+
+    }
+    .character-img img:hover {
+      transform: scale(1.4); 
+           
+    }  
+    h1.main-heading {
+      animation-name: star;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      position: relative;
+      top: 10px;
+      left: 20px;
+      
+    }
+      @keyframes star {
+          0%   {color: gold; bottom: 100px;}
+          25%  {color: black; bottom: 150px; font-size: 2.5rem;}
+          50%  {color: gold; bottom: 200px;}
+          100% {color: black; bottom: 250px;}
+      } 
+    #select {
+        animation-name: b;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        
+        
+      } 
+      @keyframes b {
+          0%   {color: purple; background: black;}
+          33%  {color: white; background: purple;}
+          77%  {color: purple; background: black;}
+          100% {color: white; }  
+      }
+    .planets img {
+      width: 338px;
+    }  
+    div.ebook {
+      margin-right: auto;
+      margin-left: auto;
+      top: 300px;
+    }
+    .hide-me {
+      visibility: hidden;
+    } 
+      
+    .content-output {
+        padding: 15px;
+        font-family: 'Satisfy', cursive;
+        font-size: 2rem;
+    }
+    #btn{
+        transition: all ease-in-out .8s;  
+    }  
+    #btn:hover {
+        transform: rotate(-360deg);      
+    }  
+      
+
+  </style>
+
+  <script>
+
+
+
+    var btn = document.getElementById('btn');
+
+    var characterContainer = document.getElementById("character-info");
+    var characterImg = document.getElementById("character-img");
+    var planetImg = document.getElementById("planet-img");
+    var btn2 = document.getElementById('btn2');
+    var planetContainer = document.getElementById("planet-info");
+    // will store user selection choice  
+    var choice = "1";
+    //stores home planet depending on character  
+    var planet = "1";
+    var imgPath = '<img src="../images/star-wars/luke.png">';
+    var planetPath = '<img src="../images/star-wars/Tatooine.png">';
+
+
+    function chooseCharacter(x) {
+      if (x == '1') {
+        choice = '1';
+        imgPath = '<img src="../images/star-wars/luke.png">';
+        planet = '1';
+        planetPath = '<img src="../images/star-wars/Tatooine.png">';
+      } else if (x == '2') {
+        choice = '2'
+        imgPath = '<img src="../images/star-wars/C3PO.png">';
+        planet = '1';
+        planetPath = '<img src="../images/star-wars/Tatooine.png">';
+      } else if (x == '3') {
+        choice = '3'
+        imgPath = '<img src="../images/star-wars/R2D2.png">';
+        planet = '8';
+        planetPath = '<img src="../images/star-wars/Naboo.png">';
+      } else if (x == '4') {
+        choice = '4'
+        imgPath = '<img src="../images/star-wars/vader.png">';
+        planet = '1';
+        planetPath = '<img src="../images/star-wars/Tatooine.png">';
+      } else if (x == '5') {
+        choice = '5'
+        imgPath = '<img src="../images/star-wars/leia.png">';
+        planet = '2';
+        planetPath = '<img src="../images/star-wars/Alderaan.jpg">';
+      } else if (x == '10') {
+        choice = '10'
+        imgPath = '<img src="../images/star-wars/obi-wan.png">';
+        planet = '20';
+        planetPath = '<img src="../images/star-wars/question.png">';
+      } else if (x == '13') {
+        choice = '13'
+        imgPath = '<img src="../images/star-wars/chewbacca.png">';
+        planet = '14';
+        planetPath = '<img src="../images/star-wars/Kashyyk.png">';
+      } else if (x == '14') {
+        choice = '14'
+        imgPath = '<img src="../images/star-wars/solo.png">';
+        planet = '22';
+        planetPath = '<img src="../images/star-wars/Corellia.png">';
+      } else if (x == '20') {
+        choice = '20'
+        imgPath = '<img src="../images/star-wars/yoda.png">';
+        planet = '28';
+        planetPath = '<img src="../images/star-wars/question.png">';
+      } else {
+        choice = "1";
+        //document.getElementById('blue').style.display = 'none';
+        //document.getElementById('red').style.display = 'block';
+      }
+    }
+
+
+
+    btn2.addEventListener("click", function () {
+      //choice = "2";
+      location.reload();
+    })
+
+    btn.addEventListener("click", function () {
+
+      // Request JSON file
+      var myRequest = new XMLHttpRequest();
+      myRequest.open('GET', 'https://swapi.co/api/people/' + choice + '/');
+      myRequest.onload = function () {
+
+        // JSON parse    
+        var myData = JSON.parse(myRequest.responseText);
+        renderHTML(myData);
+
+
+        var swJSON = JSON.stringify(myData);
+        console.log(myData);
+
+      };
+
+      myRequest.onerror = function () {
+        console.log("Connection error");
+      };
+      myRequest.send();
+      homeWorld();
+      btn.classList.add("hide-me");
+
+
+    });
+
+    function homeWorld() {
+      var myRequest2 = new XMLHttpRequest();
+      myRequest2.open('GET', 'https://swapi.co/api/planets/' + planet + '/');
+      myRequest2.onload = function () {
+
+        // JSON parse    
+        var myData2 = JSON.parse(myRequest2.responseText);
+        renderPlanetHTML(myData2);
+
+
+        var swJSON2 = JSON.stringify(myData2);
+        console.log(myData2);
+
+      };
+
+      myRequest2.onerror = function () {
+        console.log("Connection error");
+      };
+      myRequest2.send();
+
+    }
+
+    function renderHTML(data) {
+      var htmlString = "";
+
+
+      htmlString = "<h3>" + data.name + "</h3>";
+
+      htmlString += "<ul><li>Birth Year: " + data.birth_year + "</li>" +
+              "<li>Eye Color: " + data.eye_color + "</li>" +
+              "<li>Gender: " + data.gender + "</li>" +
+              "<li>Hair Color: " + data.hair_color + "</li>" +
+              "<li>Height: " + data.height + "</li>" +
+              "<li>Mass: " + data.mass + "</li>" +
+              "<li>Skin Color: " + data.skin_color + "</li>" +
+              "</ul>";
+
+      //name.innerText = data.name;   
+      characterContainer.insertAdjacentHTML('beforeend', htmlString);
+      characterImg.insertAdjacentHTML('beforeend', imgPath);
+    }
+
+    function renderPlanetHTML(data) {
+      var planetString = "";
+
+      planetString = "<h3>" + data.name + "</h3>";
+
+      planetString += "<ul><li>Population: " + data.population + "</li>" +
+              "<li>Climate: " + data.climate + "</li>" +
+              "<li>Terrain: " + data.terrain + "</li>" +
+              "<li>Diameter: " + data.diameter + "</li>" +
+              "<li>Surface Water: " + data.surface_water + "</li>" +
+              "<li>Gravity: " + data.gravity + "</li>" +
+              "</ul>";
+
+
+      planetContainer.insertAdjacentHTML('beforeend', planetString);
+      planetImg.insertAdjacentHTML('beforeend', planetPath);
+    }
+      
+        // Save text area into local storage
+        var input_textarea = document.querySelector('.content-input');
+        var output_div = document.querySelector('.content-output');
+        var save_button = document.querySelector('.save-button');
+
+        save_button.addEventListener('click', updateOutput);
+
+        output_div.textContent = localStorage.getItem('content');
+        input_textarea.value = localStorage.getItem('content');
+
+        function updateOutput() {
+          localStorage.setItem('content', input_textarea.value);
+          output_div.textContent = input_textarea.value;
+        }
+  </script>
+</html>
